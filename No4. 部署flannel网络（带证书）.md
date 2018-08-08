@@ -65,6 +65,11 @@ etcdctl \
 {"Network":"172.30.0.0/16", "SubnetLen": 24, "Backend": {"Type": "host-gw"}}
 ```
 
+#### 安装flannel
+```
+yum install -y flannel
+```
+
 
 #### flannel的配置
 ```
