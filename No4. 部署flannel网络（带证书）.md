@@ -68,7 +68,7 @@ etcdctl \
 
 #### flannel的配置
 ```
-FLANNEL_ETCD_ENDPOINTS="https://192.168.44.139:2379,https://192.168.44.141:2379,https://192.168.44.142:2379"
+FLANNEL_ETCD_ENDPOINTS="https://192.168.44.138:2379,https://192.168.44.139:2379,https://192.168.44.140:2379"
 FLANNEL_ETCD_PREFIX="/kube-centos/network"
 FLANNEL_OPTIONS="-etcd-cafile=/etc/etcd/ssl/etcd-ca.pem -etcd-certfile=/etc/flanneld/ssl/flanneld.pem -etcd-keyfile=/etc/flanneld/ssl/flanneld-key.pem"
 
