@@ -1,4 +1,5 @@
 
+### 下面的配置文件中，很多都是有ip的。注意留心看
 ####  配置 kube-apiserver CA
 ```
 cat >kube-apiserver-csr.json<<EOF
