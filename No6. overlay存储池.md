@@ -6,15 +6,8 @@ iNode限制。使用overlay存储驱动会导致iNode的过渡消耗，尤其是
 
 不幸的是，我们仅仅创建文件系统时指定inodes大小，正因为如此，建议将/var/lib/docker目录放在独立设备上，使其拥有自己的文件系统，或者在创建文件系统时手工指定文件系统大小。
 
-### 1、使用overlay存储驱动
 
-##### 编辑/etc/sysconfig/docker-storage
-```
-DOCKER_STORAGE_OPTIONS=--storage-driver=overlay
-```
- 
-
-### 2、使用overlay2存储驱动
+### 使用overlay2存储驱动
 
 修改/etc/docker/daemon.json
 
