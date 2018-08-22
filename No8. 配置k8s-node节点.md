@@ -75,7 +75,7 @@ cat >/etc/kubernetes/kubelet<<EOF
 KUBELET_HOSTNAME="--hostname-override=192.168.44.138"
 KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1"
 KUBELET_CONFIG="--config=/etc/kubernetes/kubelet-config.yml"
-KUBELET_ARGS="--bootstrap-kubeconfig=/etc/kubernetes/kubelet-bootstrap.conf --kubeconfig=/etc/kubernetes/kubelet.conf --cert-dir=/etc/kubernetes/pki --network-plugin=cni --cni-bin-dir=/opt/cni/bin --cni-conf-dir=/etc/cni/net.d"
+KUBELET_ARGS="--cluster-dns=10.20.53.10,8.8.8.8 --bootstrap-kubeconfig=/etc/kubernetes/kubelet-bootstrap.conf --kubeconfig=/etc/kubernetes/kubelet.conf --cert-dir=/etc/kubernetes/pki --network-plugin=cni --cni-bin-dir=/opt/cni/bin --cni-conf-dir=/etc/cni/net.d"
 EOF
 
 # 注意修改相关ip
