@@ -24,6 +24,8 @@ iNode限制。使用overlay存储驱动会导致iNode的过渡消耗，尤其是
 
 
 ### 修改docker启动脚本
+
+vi /usr/lib/systemd/system/docker.service
 ```
 ExecStart=/usr/bin/dockerd  $DOCKER_NETWORK_OPTIONS
 ```
