@@ -1,5 +1,5 @@
-### kubernetes 安装过程 
-
-
-整体过程按照顺序搭建，要先理解证书的用途，另外，这个文档中个别地方有写错的，很小的错误，注意认真看，我是故意的。23333  。找到并修正了，就可以消化成自己的文档了。 
- 
+### 常见错误
+1、 创建coredns时pod持续创建中，无法完成。（排除网络问题）
+解决：
+kubectl create clusterrolebinding kubelet-node-clusterbinding --clusterrole=system:node --group=system:nodes
+kubectl describe clusterrolebindings kubelet-node-clusterbinding
