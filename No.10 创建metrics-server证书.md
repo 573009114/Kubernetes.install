@@ -55,6 +55,8 @@ cfssl gencert -ca=/etc/kubernetes/pki/ca.pem -ca-key=/etc/kubernetes/pki/ca-key.
 --requestheader-client-ca-file=/etc/kubernetes/pki/ca.pem --proxy-client-cert-file=/etc/kubernetes/pki/metrics-server.pem  --proxy-client-key-file=/etc/kubernetes/pki/metrics-server-key.pem --requestheader-extra-headers-prefix=X-Remote-Extra --requestheader-group-headers=X-Remote-Group --requestheader-username-headers=X-Remote-User --requestheader-allowed-names=
 
 ```
+这段内容加到apiserver配置里面， 注 ： 这里没写错，不要怀疑最后那个=
+
 
 #### 第三步：yaml案例
 ##### 1、auth-delegator.yaml
