@@ -10,7 +10,7 @@ kind: Secret
 type: kubernetes.io/tls
 metadata:
   name: mytlssecret
-  namespace: test
+  namespace: kube-system
 data:
   tls.crt: <base64 encoded cert>
   tls.key: <base64 encoded key>
