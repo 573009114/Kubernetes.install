@@ -3,7 +3,7 @@
 kubectl create secret tls https-secret --key tls.key --cert tls.crt
 
 ```
-### 第二种方法： 使用yaml创建secret， 需要指定namespace
+### 第二种方法： 使用yaml创建secret， 需要指定namespace（建议使用该种方式）
 ```
 apiVersion: v1
 kind: Secret
