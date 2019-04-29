@@ -28,7 +28,9 @@ metadata:
   name: kubernetes-dashboard
   namespace: kube-system
   annotations:
-    ingress.kubernetes.io/ssl-redirect: "False"  #是否强制跳转
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    ingress.kubernetes.io/ssl-redirect: "true"  #是否强制跳转
 spec:
   tls:
   - hosts:
