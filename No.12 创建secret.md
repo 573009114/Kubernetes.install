@@ -1,3 +1,9 @@
+### 第一种方法： 根据文件创建secret ，默认会创建到default 命名空间
+```
+kubectl create secret tls https-secret --key tls.key --cert tls.crt
+
+```
+### 第二种方法： 使用yaml创建secret， 需要指定namespace
 ```
 apiVersion: v1
 kind: Secret
