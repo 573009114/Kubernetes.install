@@ -18,8 +18,10 @@ ETCD_PEER_TRUSTED_CA_FILE="/etc/etcd/ssl/etcd-ca.pem"
 ETCD_DISCOVERY=""
 
 ETCD_QUOTA_BACKEND_BYTES="8589934592"
+# 解决 内存2g上限的问题
 ETCD_MAX_TXN_OPS="33554432"
+# 解决服务器将接受的最大客户端请求大小为1.5M的问题
 ETCD_AUTO_COMPACTION_RETENTION="1"
-
+# 开启自动压缩
 
 ### 参考 https://www.cnblogs.com/linuxws/p/11194403.html
