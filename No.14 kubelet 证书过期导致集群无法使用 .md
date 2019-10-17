@@ -2,7 +2,18 @@
 ```
 openssl x509 -in /etc/kubernetes/pki/kubelet-client-current.pem -noout -text|grep ' Not '
 ```
-##### 重启kubelet 生成 /etc/kubernetes/pki/kubelet-client-2019-10-16-17-50-25.pem 证书文件
+##### 重启kubelet 
+```
+通过master 节点 kubectl get csr 查看到有
+NAME                                                   AGE       REQUESTOR           CONDITION
+node-csr-8TOYc_WLFsHVVMnugCF8oQjNxInYrTvujZlqW-kmbrg   20h       kubelet-bootstrap   Pending
+node-csr-OcvdtL2ps2DXw8Mu0ioBEx7Rw2U1opsWjQJgawHZt94   20h       kubelet-bootstrap   Pending
+
+然后 
+kubectl certificate approve node-csr-8TOYc_WLFsHVVMnugCF8oQjNxInYrTvujZlqW-kmbrg 
+之后会生成
+/etc/kubernetes/pki/kubelet-client-2019-10-16-17-50-25.pem 证书文件
+```
 ##### 建立软链 
 ```
 ln -s /etc/kubernetes/pki/kubelet-client-2019-10-16-17-50-25.pem /etc/kubernetes/pki/kubelet-client-current.pem
