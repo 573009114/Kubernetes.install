@@ -2,8 +2,8 @@
 ```
 openssl x509 -in /etc/kubernetes/pki/kubelet-client-current.pem -noout -text|grep ' Not '
 显示：
-            Not Before: Oct 16 09:43:00 2019 GMT
-            Not After : Oct 15 09:43:00 2020 GMT
+            Not Before: Oct 16 09:43:00 2018 GMT
+            Not After : Oct 15 09:43:00 2019 GMT
 
 ```
 ##### 重启kubelet 
