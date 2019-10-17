@@ -7,6 +7,7 @@ etcdctl --endpoints="https://127.0.0.1:2379" --cacert /etc/etcd/ssl/etcd-ca.pem 
 ```
 ### v3 恢复
 ```
+export ETCDCTL_API=3
 etcdctl snapshot restore "/tmp/snapshot-$CurrentDate.db" --name pg-docker-11161 --data-dir=/export/etcd/pg-docker-55161/
 ```
 
