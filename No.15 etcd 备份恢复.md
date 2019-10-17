@@ -18,5 +18,6 @@ etcdctl backup --data-dir /export/etcd/pg-docker-55161/ --backup-dir /home/etcd_
 ### v2 恢复 带参数启动服务
 ```
 etcd -data-dir=/home/etcd_backup/  -force-new-cluster
-```
+
 ### 将/home/etcd_backup/下的目录copy到原etcd的数据目录
+```
