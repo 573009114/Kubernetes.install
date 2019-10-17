@@ -3,7 +3,10 @@
 openssl x509 -in /etc/kubernetes/pki/kubelet-client-current.pem -noout -text|grep ' Not '
 ```
 ##### 重启kubelet 生成 /etc/kubernetes/pki/kubelet-client-2019-10-16-17-50-25.pem 证书文件
-##### 建立软链 ln -s /etc/kubernetes/pki/kubelet-client-2019-10-16-17-50-25.pem /etc/kubernetes/pki/kubelet-client-current.pem
+##### 建立软链 
+```
+ln -s /etc/kubernetes/pki/kubelet-client-2019-10-16-17-50-25.pem /etc/kubernetes/pki/kubelet-client-current.pem
+```
 ##### 重启kubelet
 
 ##### 添加配置
