@@ -13,7 +13,7 @@ iNode限制。使用overlay存储驱动会导致iNode的过渡消耗，尤其是
 
 ```
 {
-  "registry-mirrors": ["https://registry.docker-cn.com"],
+  "registry-mirrors": ["https://mirror.ccs.tencentyun.com"],
   "storage-driver": "overlay2",
   "storage-opts": [
     "overlay2.override_kernel_check=true"
