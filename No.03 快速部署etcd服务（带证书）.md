@@ -1,4 +1,4 @@
-### ca-config 证书请参见前面章节
+### ca-config 证书请参见前面章节(https://github.com/573009114/Kubernetes.install/blob/master/No.02%20%E9%85%8D%E7%BD%AECA%EF%BC%88%E4%B8%8B%E9%9D%A2%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E9%83%BD%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%EF%BC%89.md)
 
 ### 基础条件
 ##### 1、下载cffsl等命令
