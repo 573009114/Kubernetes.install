@@ -9,7 +9,5 @@ yum makecache fast
 安装指定版本的Docker
 yum list docker-ce --showduplicates | sort -r
 
-yum install -y --setopt=obsoletes=0 \
-docker-ce-17.03.1.ce-1.el7.centos \
-docker-ce-selinux-17.03.1.ce-1.el7.centos
+yum install docker-ce-18.09.1-3.el7
 ```
