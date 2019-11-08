@@ -219,7 +219,7 @@ alerting:
 ```
 
 
-##### rules.yaml
+##### rules 报警规则
 ```
 groups:
 - name: node memory high 
@@ -319,4 +319,25 @@ groups:
     annotations:
       summary: Pod Down
       description: "{{$labels.pod}}{{ $labels.container }} 停止"
+```
+
+
+##### ops.tmpl 告警模版
+```
+{{ define "ops.default.message" }}
+<table border="5">
+<tr><td>报警项</td>
+<td>节点</td>
+<td>报警阀值</td>
+<td>开始时间</td>
+</tr>
+{{ range $i, $alert := .Alerts }}
+<tr><td>{{ index $alert.Labels "alertname" }}</td>
+<td>{{ index $alert.Labels "instance" }}</td>
+<td>{{ index $alert.Annotations "value" }}</td>
+<td>{{ $alert.StartsAt }}</td>
+</tr>
+{{ end }}
+</table>
+{{ end }}
 ```
