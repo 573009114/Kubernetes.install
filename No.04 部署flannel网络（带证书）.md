@@ -57,13 +57,18 @@ mv flanneld*.pem /etc/flanneld/ssl/
 etcdctl \
   --endpoints=https://127.0.0.1:2379 \
   --ca-file=/etc/etcd/ssl/etcd-ca.pem \
-  --cert-file=/etc/flanneld/ssl/flanneld.pem \
-  --key-file=/etc/flanneld/ssl/flanneld-key.pem \
+  --cert-file=/etc/etcd/ssl/etcd.pem  \
+  --key-file=/etc/etcd/ssl/etcd-key.pem  \
   set /kube-centos/network/config '{"Network":"'172.30.0.0/16'", "SubnetLen": 24, "Backend": {"Type": "host-gw"}}'
  ```
  ##### etcd_api v3 写法：
  ```
-ETCDCTL_API=3 etcdctl  --endpoints "https://127.0.0.1:2379" --cacert=/etc/etcd/ssl/etcd-ca.pem   --cert=/etc/etcd/ssl/etcd.pem   --key=/etc/etcd/ssl/etcd-key.pem put /testk8s/network/config '{ "Network": "172.30.0.0/16" }'
+ETCDCTL_API=3 etcdctl  \
+        --endpoints "https://127.0.0.1:2379" \
+        --cacert=/etc/etcd/ssl/etcd-ca.pem   \
+        --cert=/etc/etcd/ssl/etcd.pem   \
+        --key=/etc/etcd/ssl/etcd-key.pem \
+ put /testk8s/network/config '{ "Network": "172.30.0.0/16" }'
  ```
  
  
