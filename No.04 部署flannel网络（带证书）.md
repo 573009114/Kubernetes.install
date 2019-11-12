@@ -51,7 +51,9 @@ mv flanneld*.pem /etc/flanneld/ssl/
 
 
 向etcd写入集群信息
+##### etcd_api v2 写法：
 ```
+
 etcdctl \
   --endpoints=https://127.0.0.1:2379 \
   --ca-file=/etc/etcd/ssl/etcd-ca.pem \
@@ -59,6 +61,11 @@ etcdctl \
   --key-file=/etc/flanneld/ssl/flanneld-key.pem \
   set /kube-centos/network/config '{"Network":"'172.30.0.0/16'", "SubnetLen": 24, "Backend": {"Type": "host-gw"}}'
  ```
+ ##### etcd_api v3 写法：
+ ```
+ETCDCTL_API=3 etcdctl  --endpoints "https://127.0.0.1:2379" --cacert=/etc/etcd/ssl/etcd-ca.pem   --cert=/etc/etcd/ssl/etcd.pem   --key=/etc/etcd/ssl/etcd-key.pem put /testk8s/network/config '{ "Network": "172.30.0.0/16" }'
+ ```
+ 
  
 #### 得到如下反馈信息
 ```
