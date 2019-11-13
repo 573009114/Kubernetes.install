@@ -50,7 +50,7 @@ mv flanneld*.pem /etc/flanneld/ssl/
 
 
 
-向etcd写入集群信息
+向etcd写入集群信息   # flannel 0.7.1 不支持etcd_api v3
 ##### etcd_api v2 写法：
 ```
 
