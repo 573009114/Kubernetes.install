@@ -54,23 +54,12 @@ mkdir -pv /opt/flannel/{bin,etc}
 tar -zxvf flannel-v0.11.0-linux-amd64.tar.gz -C /opt/flannel/bin/
 
 ```
-##### 二，创建remove-docker0.sh
+##### 二，创建docker关联flannel子网关系
 ```
-cat > /opt/flannel/bin/remove-docker0.sh << "EOF"
-#!/bin/bash
-# Delete default docker bridge, so that docker can start with flannel network.
-# exit on any erro
-set -e
- 
-rc=0
-ip link show docker0 > /dev/null 2>&1 || rc="$?"
-if [[ "$rc" -eq "0" ]];then
-ip link set dev docker0 down
-ip link delete docker0
-fi
-EOF
-
-chmod +x /opt/flannel/bin/remove-docker0.sh 
+cat > /usr/lib/systemd/system/docker.service.d/flannel.conf << "EOF"
+[Service]
+EnvironmentFile=-/run/flannel/docker
+EOF 
 ```
 
 ##### 三，配置flannel
@@ -92,16 +81,23 @@ cat  /usr/lib/systemd/system/flannel.service
 [Unit]
 Description=Flanneld overlay address etcd agent
 After=network.target
+After=network-online.target
+Wants=network-online.target
+After=etcd.service
 Before=docker.service
+
 [Service]
-EnvironmentFile=-/opt/flannel/etc/flannel.conf
-ExecStartPre=/opt/flannel/bin/remove-docker0.sh
-ExecStart=/opt/flannel/bin/flanneld ${FLANNEL_ETCD} ${FLANNEL_ETCD_KEY} ${FLANNEL_ETCD_CAFILE} ${FLANNEL_ETCD_CERTFILE} ${FLANNEL_ETCD_KEYFILE}
-ExecStartPost=/opt/flannel/bin/mk-docker-opts.sh -d /run/flannel/docker
 Type=notify
+EnvironmentFile=/opt/flannel/etc/flannel.conf
+EnvironmentFile=-/etc/sysconfig/docker-network
+ExecStart=/opt/flannel/bin/flanneld ${FLANNEL_ETCD} ${FLANNEL_ETCD_KEY} ${FLANNEL_ETCD_CAFILE} ${FLANNEL_ETCD_CERTFILE} ${FLANNEL_ETCD_KEYFILE}
+ExecStartPost=/opt/flannel/bin/mk-docker-opts.sh -k $DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
+Restart=on-failure
+
 [Install]
 WantedBy=multi-user.target
-RequiredBy=docker.service
+WantedBy=docker.service
+
 
 启动
 systemctl daemon-reload && systemctl enable flannel && systemctl restart flannel
