@@ -93,7 +93,7 @@ Type=notify
 EnvironmentFile=/opt/flannel/etc/flannel.conf
 EnvironmentFile=-/etc/sysconfig/docker-network
 ExecStart=/opt/flannel/bin/flanneld ${FLANNEL_ETCD} ${FLANNEL_ETCD_KEY} ${FLANNEL_ETCD_CAFILE} ${FLANNEL_ETCD_CERTFILE} ${FLANNEL_ETCD_KEYFILE}
-ExecStartPost=/opt/flannel/bin/mk-docker-opts.sh -k $DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
+ExecStartPost=/opt/flannel/bin/mk-docker-opts.sh -d /run/flannel/docker
 Restart=on-failure
 
 [Install]
@@ -105,4 +105,12 @@ WantedBy=docker.service
 systemctl daemon-reload && systemctl enable flannel && systemctl restart flannel
 ```
 
+##### 五、修改docker.service
+```
+cat /usr/lib/systemd/system/docker.service
+
+加入
+EnvironmentFile=-/run/flannel/docker
+
+```
 
