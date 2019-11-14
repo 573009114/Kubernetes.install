@@ -77,7 +77,7 @@ ETCDCTL_API=3 etcdctl  \
 {"Network":"172.30.0.0/16", "SubnetLen": 24, "Backend": {"Type": "host-gw"}}
 ```
 
-# yum安装flannel 部分
+# yum安装flannel 方法：
 ```
 yum install -y flannel
 ``` 
@@ -92,7 +92,7 @@ FLANNEL_OPTIONS="-etcd-cafile=/etc/etcd/ssl/etcd-ca.pem -etcd-certfile=/etc/flan
 
 
 
-# 二进制部署flannel部分
+# 二进制部署flannel方法：
 
 ##### 一，下载 flanneld 二进制文件
 ```
