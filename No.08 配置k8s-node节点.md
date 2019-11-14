@@ -14,25 +14,26 @@ cd $HOME
 ## 配置 cni支持
 ```
 创建/etc/cni/net.d/10-flannel.conflist
-
+{
+  "cniVersion": "0.3.0",
+  "name": "cbr0",
+  "plugins": [
     {
-      "name": "cbr0",
-      "plugins": [
-        {
-          "type": "flannel",
-          "delegate": {
-            "hairpinMode": true,
-            "isDefaultGateway": true
-          }
-        },
-        {
-          "type": "portmap",
-          "capabilities": {
-            "portMappings": true
-          }
-        }
-      ]
+      "type": "flannel",
+      "delegate": {
+        "hairpinMode": true,
+        "isDefaultGateway": true
+      }
+    },
+    {
+      "type": "portmap",
+      "capabilities": {
+        "portMappings": true
+      }
     }
+  ]
+}
+
     
 备注： cni 和二进制的flannel可能会存在路由冲突的问题。
 ```
