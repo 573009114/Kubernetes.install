@@ -112,5 +112,8 @@ cat /usr/lib/systemd/system/docker.service
 加入
 EnvironmentFile=-/run/flannel/docker
 
+修改
+ExecStart=/usr/bin/dockerd -H fd://  $DOCKER_OPTS
+
 ```
 
