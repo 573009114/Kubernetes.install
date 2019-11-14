@@ -56,7 +56,9 @@ tar -zxvf flannel-v0.11.0-linux-amd64.tar.gz -C /opt/flannel/bin/
 ```
 ##### 二，创建docker关联flannel子网关系
 ```
-cat > /usr/lib/systemd/system/docker.service.d/flannel.conf << "EOF"
+mkdir /usr/lib/systemd/system/docker.service.d/ -pv
+
+cat > /usr/lib/systemd/system/docker.service.d/flannel.conf << EOF
 [Service]
 EnvironmentFile=-/run/flannel/docker
 EOF 
