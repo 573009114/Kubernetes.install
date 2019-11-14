@@ -1,56 +1,9 @@
-### 基础条件
-##### 1、下载cffsl等命令
-```
-# 下载
-wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
-wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
-wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64
-
-# 安装
-mv cfssl-certinfo_linux-amd64 /usr/local/bin/cfssl-certinfo
-mv cfssl_linux-amd64 /usr/local/bin/cfssl
-mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
-chmod +x /usr/local/bin/cfssl*
-
-```
+[证书配置参考 etcd证书部分](https://github.com/573009114/Kubernetes.install/blob/master/No.03%20%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2etcd%E6%9C%8D%E5%8A%A1%EF%BC%88%E5%B8%A6%E8%AF%81%E4%B9%A6%EF%BC%89.md)
+ 
 
 
 
-
-#### flannel 专用证书
-```
-cat > flanneld-csr.json <<EOF
-{
-  "CN": "flanneld",
-  "hosts": [],
-  "key": {
-    "algo": "rsa",
-    "size": 2048
-  },
-  "names": [
-    {
-      "C": "CN",
-      "ST": "BeiJing",
-      "L": "BeiJing",
-      "O": "k8s",
-      "OU": "4Paradigm"
-    }
-  ]
-}
-EOF
-```
-
-生成证书
-```
-cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes flanneld-csr.json |cfssljson -bare flanneld
-
-mkdir /etc/flanneld/ssl -pv
-mv flanneld*.pem /etc/flanneld/ssl/
-```
-
-
-
-向etcd写入集群信息   # flannel 0.7.1 不支持etcd_api v3
+###### 向etcd写入集群信息   # flannel 0.7.1 不支持etcd_api v3
 ##### etcd_api v2 写法：
 ```
 
