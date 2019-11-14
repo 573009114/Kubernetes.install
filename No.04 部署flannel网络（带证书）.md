@@ -73,7 +73,7 @@ FLANNEL_ETCD_KEY="-etcd-prefix=/kube-centos/network"
 FLANNEL_ETCD_CAFILE="--etcd-cafile=/etc/etcd/ssl/etcd-ca.pem"
 FLANNEL_ETCD_CERTFILE="--etcd-certfile=/etc/etcd/ssl/etcd.pem"
 FLANNEL_ETCD_KEYFILE="--etcd-keyfile=/etc/etcd/ssl/etcd-key.pem"
-
+FLANNEL_OPTIONS="--iface=eth0 -ip-masq" 
 ```
 
 ##### 四，配置systemd 启动
