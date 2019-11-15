@@ -25,5 +25,15 @@ Subjects:
   ```
 
 
+2、 如果在1.16.x版本中，发现apiserver日志出现以下错误
+```
+Nov 15 10:03:39 yhg-k8s-55171 kube-apiserver: I1115 10:03:39.889451    9303 node_authorizer.go:253] NODE DENY: yhg-k8s-55174 &authorizer.AttributesRecord{User:(*user.DefaultInfo)(0xc009c24e00), Verb:"update", Namespace:"kube-node-lease", APIGroup:"coordination.k8s.io", APIVersion:"v1", Resource:"leases", Subresource:"", Name:"yhg-k8s-55175", ResourceRequest:true, Path:"/apis/coordination.k8s.io/v1/namespaces/kube-node-lease/leases/yhg-k8s-55175"}
+```
+则需要绑定权限和组
+```
+kubectl create clusterrolebinding bootstrap --clusterrole=cluster-admin --user=kubelet-bootstrap
+```
+
+
 #### No0-No8 集群搭建部分
 #### 从No9 开始，后面的部分属于集群组件和使用技巧部分。
