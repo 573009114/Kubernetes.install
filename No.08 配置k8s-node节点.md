@@ -33,9 +33,6 @@ cd $HOME
     }
   ]
 }
-
-    
-备注： cni 和二进制的flannel可能会存在路由冲突的问题。
 ```
 
 ## 配置启动kubelet
