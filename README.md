@@ -33,6 +33,10 @@ Nov 15 10:03:39 yhg-k8s-55171 kube-apiserver: I1115 10:03:39.889451    9303 node
 ```
 kubectl create clusterrolebinding bootstrap --clusterrole=cluster-admin --user=kubelet-bootstrap
 ```
+修改kubelet参数，将kubelet-bootstrap改成下面的这种
+```
+--bootstrap-kubeconfig=/etc/kubernetes/bootstrap.conf
+```
 
 
 #### No0-No8 集群搭建部分
