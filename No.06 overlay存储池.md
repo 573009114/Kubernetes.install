@@ -20,6 +20,11 @@ iNode限制。使用overlay存储驱动会导致iNode的过渡消耗，尤其是
   "storage-opts": [
     "overlay2.override_kernel_check=true"
   ],
+  "dns":[
+      "10.52.0.31",
+      "10.52.0.32"
+  ],
+
   "live-restore": true
 }
 ```
