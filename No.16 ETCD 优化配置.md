@@ -29,7 +29,7 @@ ETCD_AUTO_COMPACTION_RETENTION="1"
 ```
 
 
-### k8s 自带etcd的配置方式，修改/etc/kubernetes/manifests/etcd.yaml
+### k8s 自带etcd的配置样例，修改/etc/kubernetes/manifests/etcd.yaml
 ```
 - etcd
 - --advertise-client-urls=https://10.10.7.249:2379
