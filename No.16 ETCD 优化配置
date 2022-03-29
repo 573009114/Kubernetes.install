@@ -25,3 +25,29 @@ ETCD_AUTO_COMPACTION_RETENTION="1"
 # 开启自动压缩
 
 ### 参考 https://www.cnblogs.com/linuxws/p/11194403.html
+
+
+
+### k8s 自带etcd的配置方式，修改/etc/kubernetes/manifests/etcd.yaml
+- etcd
+- --advertise-client-urls=https://10.10.7.249:2379
+- --cert-file=/etc/kubernetes/pki/etcd/server.crt
+- --client-cert-auth=true
+- --data-dir=/data/etcd
+- --initial-advertise-peer-urls=https://10.10.7.249:2380
+- --initial-cluster=vm10-10-7-99=https://10.10.7.99:2380,vm10-10-7-249=https://10.10.7.249:2380
+- --initial-cluster-state=existing
+- --key-file=/etc/kubernetes/pki/etcd/server.key
+- --listen-client-urls=https://127.0.0.1:2379,https://10.10.7.249:2379
+- --listen-metrics-urls=http://127.0.0.1:2381
+- --listen-peer-urls=https://10.10.7.249:2380
+- --name=vm10-10-7-249
+- --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
+- --peer-client-cert-auth=true
+- --peer-key-file=/etc/kubernetes/pki/etcd/peer.key
+- --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+- --snapshot-count=10000
+- --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+- --quota-backend-bytes=8589934592
+- --max-request-bytes=10485760
+- --auto-compaction-retention=1
