@@ -1,3 +1,4 @@
+```
 [Member]
 ETCD_NAME=pg-docker-55161
 ETCD_DATA_DIR="/export/etcd/pg-docker-55161"
@@ -25,10 +26,11 @@ ETCD_AUTO_COMPACTION_RETENTION="1"
 # 开启自动压缩
 
 ### 参考 https://www.cnblogs.com/linuxws/p/11194403.html
-
+```
 
 
 ### k8s 自带etcd的配置方式，修改/etc/kubernetes/manifests/etcd.yaml
+```
 - etcd
 - --advertise-client-urls=https://10.10.7.249:2379
 - --cert-file=/etc/kubernetes/pki/etcd/server.crt
@@ -51,3 +53,4 @@ ETCD_AUTO_COMPACTION_RETENTION="1"
 - --quota-backend-bytes=8589934592
 - --max-request-bytes=10485760
 - --auto-compaction-retention=1
+```
